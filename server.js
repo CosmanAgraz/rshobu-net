@@ -7,9 +7,9 @@ var port = process.env.PORT || 3000;
 
 app.set("PORT", port);
 
-app.use(express.static("./build"));
+app.use(express.static("./client/build"));
 
-const entryPoint = path.resolve(__dirname, "build", "index.html");
+const entryPoint = path.resolve(__dirname, "client", "build", "index.html");
 
 app.get("*", (req, res) => 
 {

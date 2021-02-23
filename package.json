@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/CosmanAgraz/rshobu-net/issues"
   },
-  "homepage": "https://github.com/CosmanAgraz/rshobu-net#readme"
+  "homepage": "https://github.com/CosmanAgraz/rshobu-net#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
