@@ -1,45 +1,24 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@babylonjs/core": "^4.2.0",
-    "@babylonjs/materials": "^4.2.0",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.6.3",
-    "classnames": "^2.2.6",
-    "express": "^4.17.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.2",
-    "sass": "^1.32.6",
-    "web-vitals": "^1.1.0"
-  },
+  "name": "rshobu-net",
+  "version": "1.0.0",
+  "description": "Website w/ React front-end",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "",
+    "start": "node server.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CosmanAgraz/rshobu-net.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "keywords": [
+    "react",
+    "express"
+  ],
+  "author": "Serge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CosmanAgraz/rshobu-net/issues"
+  },
+  "homepage": "https://github.com/CosmanAgraz/rshobu-net#readme"
 }

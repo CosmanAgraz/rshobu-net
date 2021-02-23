@@ -1,0 +1,12 @@
+@use '../../styles/variables.scss' as vars;
+
+@import '../../styles/typography.scss';
+@import '../../styles/variables.scss';
+
+.root {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    align-items: center;
+}

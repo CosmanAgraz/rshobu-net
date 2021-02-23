@@ -1,0 +1,25 @@
+.root{
+    max-width: 60rem; /* 20px smaller, to fit the paddings on the sides */
+    height: 100%;
+
+    padding: 0 0.625rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.flexbox{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+
+    margin-top:2rem;
+    margin-bottom:2rem;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
