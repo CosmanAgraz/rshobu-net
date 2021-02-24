@@ -9,15 +9,19 @@ This project was made to meet 2 requirements:
 2.  Setting up CI/CD on Azure using Github Actions
 
 **Q: Why React**
+
 A: When you've written enough HTML/CSS/Javascript, you'll begin to realize that a lot of what you write becomes repetition.  React solves this problem by having a developer (you) create components, which can be used not only multiple times within a project, but across many projects.  This is 🔥 shit, I'm telling ya!
 
 **Q: Why Azure**
+
 A: Its free to sign up, they give you a free SSL certificate for your apps, and 1GB Free tier for Node.js web applications.  There are other (personal) reasons such as: GUI is better than AWS, but those previous ones listed are the main reason.  DigitalOcean and Linode offer attractive, shared resource VMs for $5USD/mo ~($8CAD/mo).  Using DigitalOcean was easy and offers a lot of freedom. But I am broke, in debt, and praying every night my landlord doesn't kick me out because I've been late on rent payments.  Azure fits my needs.
 
 **Q: Why Github Actions?**
+
 A: Easy to setup, easy to maintain, and gets you from point A (development) to point B (deployment) quick.  Azure DevOps is nice and all, but there are too many steps to getting shit done.  Unfortunately, I don't have enough time in this world to learn all that shit, and neither do you.
 
 **Q: What about a database?**
+
 A: Azure offers database hosting, albeit expensive.  If you are in unfavorable financial situations such as myself, avoid them.  Instead, create a Sqlite3 databse, shove that into Azure blob stroage container, and have your Express server connect to that.  If you have money to spend, don't spend it on Azure.  I reckon setting up a VM, and creating a Postgre/MySQL/MariaDB database instance in that VM is cheaper (and better) than anything Azure has to offer.
 
 ## Setup Tutorial
@@ -30,14 +34,17 @@ A: Azure offers database hosting, albeit expensive.  If you are in unfavorable f
 ### Step 1: Setup Azure
 
 Head over to [https://azure.microsoft.com/en-ca/features/azure-portal/](Azure Portal) create an account.  You'll want to do the following:
+
 1. Create a **"Pay-as-you-Go"** subscription.
 2. Create a **Resource Group** under your "Pay-as-you-Go" subscription.
 3. Create a **Web App** instance. 
 
 I recommend you use the same NodeJS version you have on your local machine to reduce the chances of running into bullshit.
+
 Also **make sure** you select **1GB Free Developer Tier**. Its not set to default, and you will pay money you didn't have to if you don't pay attention.
 
 ### Step 2: Setup Github repo
+
 1. Create new [https://github.com/new](repo)
 2. Clone to your machine `git clone <my-repo-url>`
 3. Navigate to where the repo was cloned, and use `npx create-react-app client`
