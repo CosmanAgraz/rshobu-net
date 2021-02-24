@@ -45,7 +45,7 @@ Also **make sure** you select **1GB Free Developer Tier**. Its not set to defaul
 
 ### Step 2: Setup Github repo
 
-1. Create new [https://github.com/new](repo)
+1. Create new [repo](https://github.com/new)
 2. Clone to your machine `git clone <my-repo-url>`
 3. Navigate to where the repo was cloned, and use `npx create-react-app client`
 
