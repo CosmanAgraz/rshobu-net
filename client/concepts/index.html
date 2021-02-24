@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Babylon.js sample code</title>
+
+    <!-- Babylon.js -->
+    <script src="https://code.jquery.com/pep/0.4.2/pep.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+    <script src="https://preview.babylonjs.com/ammo.js"></script>
+    <script src="https://preview.babylonjs.com/cannon.js"></script>
+    <script src="https://preview.babylonjs.com/Oimo.js"></script>
+    <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+    <script src="https://preview.babylonjs.com/babylon.js"></script>
+    <script src="https://preview.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+    <script src="https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+    <script src="https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+    <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://preview.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet"> 
+
+    <style>        
+        
+        html{
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            color: #ededed;
+        }
+
+        #wrapper{
+            max-width: 960px; /* 20px smaller, to fit the paddings on the sides */
+            height: 100%;
+
+            padding-right: 10px;
+            padding-left: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .flex-1{
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 100%;
+
+            margin-top:2rem;
+            margin-bottom:2rem;
+        }
+        
+        ul{
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            padding: 0 0 0 0;
+
+        }
+
+        li{
+            padding: 0.5rem 3rem 0.5rem 3rem;
+            background-color: rgba(0,0,0,0.5);
+        }
+        header{
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .page-content{
+            overflow: auto;
+            flex: 1;
+            padding: 0 1rem 0 1rem;
+
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        footer{
+            text-align: center;
+            background-color: rgba(0,0,0,0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <div id="wrapper">
+        
+        <div class="flex-1">
+            <!--<div class="fill">&nbsp;</div>-->
+            <header>
+                <ul>
+                    <li>
+                        Home
+                    </li>
+                    <li>
+                        Gallery
+                    </li>
+                    <li>
+                        About
+                    </li>
+                </ul>
+            </header>
+            <div class="page-content">
+                <section>
+                    <h2>Home</h2>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi praesentium totam, id sunt officiis et beatae laborum aspernatur voluptas modi explicabo mollitia quasi facilis distinctio iste earum consequatur voluptates facere!</div>
+                    <div>Porro doloribus quae ipsam alias ipsum consectetur voluptatibus vitae nesciunt, natus labore asperiores illum non? Officia illum reprehenderit aspernatur omnis, voluptates veritatis itaque sit, non fugiat earum dolor quisquam ab.</div>
+                    <div>Possimus impedit excepturi reprehenderit. Ab reiciendis adipisci sunt iusto fugiat consequatur nesciunt beatae repudiandae, maxime incidunt, eius, expedita harum! Eligendi, commodi incidunt id sapiente aliquid deserunt asperiores, assumenda error quaerat.</div>
+            
+                </section>
+
+                <section>
+                    <h2>About</h2>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi praesentium totam, id sunt officiis et beatae laborum aspernatur voluptas modi explicabo mollitia quasi facilis distinctio iste earum consequatur voluptates facere!</div>
+                    <div>Porro doloribus quae ipsam alias ipsum consectetur voluptatibus vitae nesciunt, natus labore asperiores illum non? Officia illum reprehenderit aspernatur omnis, voluptates veritatis itaque sit, non fugiat earum dolor quisquam ab.</div>
+                    <div>Possimus impedit excepturi reprehenderit. Ab reiciendis adipisci sunt iusto fugiat consequatur nesciunt beatae repudiandae, maxime incidunt, eius, expedita harum! Eligendi, commodi incidunt id sapiente aliquid deserunt asperiores, assumenda error quaerat.</div>
+            
+                </section>
+
+                <section>
+                    <h2>Gallery</h2>
+                    
+            
+                </section>
+            </div>
+            <footer>
+                <p>Sergio Cosman Agraz &#9733; 2021</p>
+            </footer>
+            <!--<div class="fill">&nbsp;</div>-->
+        </div>
+        
+    </div>
+    <script>
+        var canvas = document.getElementById("renderCanvas");
+
+        var engine = null;
+        var scene = null;
+        var sceneToRender = null;
+        var createDefaultEngine = function () { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false }); };
+        function toRadians(angle) {
+            return angle * (Math.PI / 180);
+        }
+
+        const createScene = () => {
+            const scene = new BABYLON.Scene(engine);
+
+            scene.clearColor = new BABYLON.Color3(0, 0, 0.2);
+
+            const camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 3.5, Math.PI / 3.2, 0, BABYLON.Vector3.Zero(), scene);
+            camera.attachControl(canvas, false);
+            //const light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(1, 1, 0));
+
+            // lights
+            var light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
+            light.groundColor = new BABYLON.Color3(0.4, 0.4, 0.5);
+            light.intensity = 1;
+            var plight = new BABYLON.PointLight("pl", new BABYLON.Vector3(0, 0, 0), scene);
+            plight.diffuse = BABYLON.Color3.White();
+            plight.specular = BABYLON.Color3.Blue();
+            plight.intensity = 6.0;
+
+            //init arary of cubes
+            const cubes = [];
+
+            var gradientMaterial = new BABYLON.GradientMaterial("grad", scene);
+            gradientMaterial.topColor = BABYLON.Color3.Teal(); // Set the gradient top color
+            gradientMaterial.bottomColor = BABYLON.Color3.Magenta(); // Set the gradient bottom color
+            gradientMaterial.offset = 0.25;
+
+            var normalMaterial = new BABYLON.NormalMaterial("normal", scene);
+
+            //populate arraay of cubes with random size
+            for (var i = 0; i < 400; i++) {
+                let size = Math.floor(Math.random() * 10) * 0.1;
+                let cube = BABYLON.MeshBuilder.CreateBox("box", { height: size, width: size, depth: size });
+                cube.material = gradientMaterial;
+                cubes.push(cube);
+            }
+
+            const frameRate = 90;
+            //translate cubes orign
+            cubes.forEach((cube) => {
+                cube.position.x = Math.ceil((Math.random() * 10)) * (Math.round(Math.random()) ? 1 : -1);
+                let initY = Math.ceil((Math.random() * 10)) * (Math.round(Math.random()) ? 1 : -1);
+                cube.position.z = Math.ceil((Math.random() * 10)) * (Math.round(Math.random()) ? 1 : -1);
+
+                const floatAnim = new BABYLON.Animation("floatAnim", "position.y", frameRate, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+
+                const keyFrames = [];
+                let randomTranslation = Math.random() * 50;
+
+                for (var i = 0; i <= 360; i++) {
+                    keyFrames.push({
+                        frame: i,
+                        value: Math.cos(toRadians(i + randomTranslation)) * 0.1 + initY
+                    });
+                }
+
+                floatAnim.setKeys(keyFrames);
+
+                cube.animations.push(floatAnim);
+
+                scene.beginAnimation(cube, 0, 360, true);
+
+            });
+
+            var url = "https://upload.wikimedia.org/wikipedia/commons/e/e9/Gradient_1024x768.jpg";
+            var background = new BABYLON.Layer("back", url, scene);
+            background.isBackground = true;
+
+            engine.runRenderLoop(function ()
+            {
+                camera.alpha -= 0.0001;
+            });	
+
+            return scene;
+
+        };;
+        var engine;
+        var scene;
+        initFunction = async function () {
+            var asyncEngineCreation = async function () {
+                try {
+                    return createDefaultEngine();
+                } catch (e) {
+                    console.log("the available createEngine function failed. Creating the default engine instead");
+                    return createDefaultEngine();
+                }
+            }
+
+            engine = await asyncEngineCreation();
+            if (!engine) throw 'engine should not be null.';
+            scene = createScene();
+        };
+        initFunction().then(() => {
+            sceneToRender = scene
+            engine.runRenderLoop(function () {
+                if (sceneToRender && sceneToRender.activeCamera) {
+                    sceneToRender.render();
+                }
+            });
+        });
+
+        // Resize
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+</body>
+
+</html>
