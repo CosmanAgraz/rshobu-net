@@ -1,6 +1,6 @@
 # Welcome to rshobu.net!
 
-This project is hosted on [Azure](https://azure.microsoft.com/en-ca/features/azure-portal/), uses [Github Actions](https://docs.github.com/en/actions) for [ auto-deployments](https://en.wikipedia.org/wiki/Continuous_delivery), and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is hosted on [Azure](https://azure.microsoft.com/en-ca/features/azure-portal/), uses [Github Actions](https://docs.github.com/en/actions) for auto-deployments, and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Motivation
 
