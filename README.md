@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# Welcome to rshobu.net!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is hosted on [https://azure.microsoft.com/en-ca/features/azure-portal/](Azure), uses [https://docs.github.com/en/actions](Github Actions) for [https://en.wikipedia.org/wiki/Continuous_delivery](auto-deployments), and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Motivation
 
-In the project directory, you can run:
+This project was made to meet 2 requirements:
+1.  Get familiar with React development
+2.  Setting up CI/CD on Azure using Github Actions
 
-### `npm start`
+**Q: Why React**
+A: When you've written enough HTML/CSS/Javascript, you'll begin to realize that a lot of what you write becomes repetition.  React solves this problem by having a developer (you) create components, which can be used not only multiple times within a project, but across many projects.  This is 🔥 shit, I'm telling ya!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Q: Why Azure**
+A: Its free to sign up, they give you a free SSL certificate for your apps, and 1GB Free tier for Node.js web applications.  There are other (personal) reasons such as: GUI is better than AWS, but those previous ones listed are the main reason.  DigitalOcean and Linode offer attractive, shared resource VMs for $5USD/mo ~($8CAD/mo).  Using DigitalOcean was easy and offers a lot of freedom. But I am broke, in debt, and praying every night my landlord doesn't kick me out because I've been late on rent payments.  Azure fits my needs.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Q: Why Github Actions?**
+A: Easy to setup, easy to maintain, and gets you from point A (development) to point B (deployment) quick.  Azure DevOps is nice and all, but there are too many steps to getting shit done.  Unfortunately, I don't have enough time in this world to learn all that shit, and neither do you.
 
-### `npm test`
+**Q: What about a database?**
+A: Azure offers database hosting, albeit expensive.  If you are in unfavorable financial situations such as myself, avoid them.  Instead, create a Sqlite3 databse, shove that into Azure blob stroage container, and have your Express server connect to that.  If you have money to spend, don't spend it on Azure.  I reckon setting up a VM, and creating a Postgre/MySQL/MariaDB database instance in that VM is cheaper (and better) than anything Azure has to offer.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup Tutorial
 
-### `npm run build`
+### Quick guide:
+1. Setup Azure
+2. Setup Github repo
+3. Setup Auto-deployments
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Step 1: Setup Azure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Head over to [https://azure.microsoft.com/en-ca/features/azure-portal/](Azure Portal) create an account.  You'll want to do the following:
+1. Create a **"Pay-as-you-Go"** subscription.
+2. Create a **Resource Group** under your "Pay-as-you-Go" subscription.
+3. Create a **Web App** instance. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I recommend you use the same NodeJS version you have on your local machine to reduce the chances of running into bullshit.
+Also **make sure** you select **1GB Free Developer Tier**. Its not set to default, and you will pay money you didn't have to if you don't pay attention.
 
-### `npm run eject`
+### Step 2: Setup Github repo
+1. Create new [https://github.com/new](repo)
+2. Clone to your machine `git clone <my-repo-url>`
+3. Navigate to where the repo was cloned, and use `npx create-react-app client`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+By this point your project structure should look like this:
+```
+root/
+  client/
+    public/
+    src/
+    node_modules/ 
+    package.json
+    package-lock.json
+  README.md
+  .gitignore
+```
+root = your project name
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Inside your `client/` directory is where your React application will go.  Now, setup the Express server which will serve the React application.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4. Setup your Express server using `npm init`
+5. For now, this is all you need in your entry-point (by default, entry-point is called index.js):
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+const express = require("express");
+const path = require("path");
 
-## Learn More
+const app = new express();
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+var port = process.env.PORT || 3000;
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+app.set("PORT", port);
 
-### Code Splitting
+app.use(express.static("./client/build"));
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+const entryPoint = path.resolve(__dirname, "client", "build", "index.html");
 
-### Analyzing the Bundle Size
+app.get("*", (req, res) => 
+{
+    res.sendFile(path.resolve( entryPoint ));
+ });
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+app.listen(port, () => console.log("listen on this port: " + port));
+```
 
-### Making a Progressive Web App
+The important bit is that your Express server needs to serve the build files of your React application. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+6 (optional). Navigate to your `client/` directory, run `npm run build` to build the production ready React application.  In that generated `build/` directory, there will be an `index.html` file.  This is our entry-point.  When a user types `https://<your-project-name-here>.azurewebsites.net`, Express recieves a GET request, and responds by serving this `index.html` file.
 
-### Advanced Configuration
+7. Add, commit, and push your changes to the repo.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Step 3: Setup Auto-deployments
+1. In the Azure Portal, head over to your Web App resource, and click on **Deployment > Deployment Center** located on the left side-menu.
+2. Select Github.  Azure is going to request access to your Github account, and (selected) repo.  Concent to all.
+3. Azure will generate a .yml file, then it will add, commit, and push it to your repo in `.github/workflows` directory.
 
-### Deployment
+At this point, when you push your local changes to your master branch, Github Actions will update the repo, build, test, and deploy to your Azure Web App.  Still not done, we need to configure the build process.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Take note of that .yml file.  Notice:
+```
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+```
 
-### `npm run build` fails to minify
+Its only executing these commands on our root directory, not inside our `client/` directory.  This means our application will fail because Azure has not installed the React dependecies, and the React app is also not being built.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. We want to: nvigate to ./client subdirectory, install dependecies, and build my React application.
+6. So, add this to your `root/package.json` scripts (not to be confused with `root/client/package.json`!)
+```"build": "cd ./client && npm install && npm run build"```
+
+That .yml file, and Github Actions, will give the instruction to Azure Web App on how to get our dependecies, and  build our application.
+This:
+```
+        npm install
+```
+Installs the dependecies in the root directory (the Express server).
+
+This:
+```
+        npm run build --if-present
+```
+Is calling the script: `cd ./client && npm install && npm run build` which installs the dependecies in the `client/` directory (the React app), then builds it.
+
+Hopefully my half-assed tutorial taught you something. 😉
