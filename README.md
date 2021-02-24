@@ -22,7 +22,7 @@ A: Easy to setup, easy to maintain, and gets you from point A (development) to p
 
 **Q: What about a database?**
 
-A: Azure offers database hosting, albeit expensive.  If you are in unfavorable financial situations such as myself, avoid them.  Instead, create a Sqlite3 databse, shove that into Azure blob stroage container, and have your Express server connect to that.  If you have money to spend, don't spend it on Azure.  I reckon setting up a VM, and creating a Postgre/MySQL/MariaDB database instance in that VM is cheaper (and better) than anything Azure has to offer.
+A: Azure offers database hosting, albeit expensive.  If you are in unfavorable financial situations such as myself, avoid them.  Instead, create a Sqlite3 databse, shove that into Azure blob stroage container, and have your Express server connect to that.  If you have money to spend, don't spend it on Azure.  I reckon setting up a VM, and creating a Postgre/MySQL/MariaDB database instance in that VM is cheaper (and better) than anything Azure has to offer.  No free SSL cert. on DigitalOcean VMs still tho :(
 
 ## Setup Tutorial
 
