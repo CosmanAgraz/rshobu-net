@@ -33,7 +33,7 @@ A: Azure offers database hosting, albeit expensive.  If you are in unfavorable f
 
 ### Step 1: Setup Azure
 
-Head over to [https://azure.microsoft.com/en-ca/features/azure-portal/](Azure Portal) create an account.  You'll want to do the following:
+Head over to [Azure Portal](https://azure.microsoft.com/en-ca/features/azure-portal/) create an account.  You'll want to do the following:
 
 1. Create a **"Pay-as-you-Go"** subscription.
 2. Create a **Resource Group** under your "Pay-as-you-Go" subscription.
