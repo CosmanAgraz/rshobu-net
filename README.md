@@ -10,19 +10,19 @@ This project was made to meet 2 requirements:
 
 **Q: Why React**
 
-A: When you've written enough HTML/CSS/Javascript, you'll begin to realize that a lot of what you write becomes repetition.  React solves this problem by having a developer (you) create components, which can be used not only multiple times within a project, but across many projects.  This is 🔥 shit, I'm telling ya!
+A: When you've written enough HTML/CSS/Javascript, you'll begin to realize that a lot of what you write becomes repetition.  React solves this problem by having a developer (you) create components, which can be used not only multiple times within a project, but across many projects.
 
 **Q: Why Azure**
 
-A: Its free to sign up, they give you a free SSL certificate for your apps, and 1GB Free tier for Node.js web applications.  There are other (personal) reasons such as: GUI is better than AWS, but those previous ones listed are the main reason.  DigitalOcean and Linode offer attractive, shared resource VMs for $5USD/mo ~($8CAD/mo).  Using DigitalOcean was easy and offers a lot of freedom. But I am broke, in debt, and praying every night my landlord doesn't kick me out because I've been late on rent payments.  Azure fits my needs.
+A: Its free to sign up, they give you a free SSL certificate for your apps, and 1GB Free tier for Node.js web applications.  There are other (personal) reasons such as: GUI is better than AWS, but those previous ones listed are the main reason.  DigitalOcean and Linode offer attractive, shared resource VMs for $5USD/mo ~($8CAD/mo), but I cannot afford this.
 
 **Q: Why Github Actions?**
 
-A: Easy to setup, easy to maintain, and gets you from point A (development) to point B (deployment) quick.  Azure DevOps is nice and all, but there are too many steps to getting shit done.  Unfortunately, I don't have enough time in this world to learn all that shit, and neither do you.
+A: Easy to setup, easy to maintain, and gets you from point A (development) to point B (deployment) quick.  Azure DevOps is nice and all, but there are too many steps to getting shit done.
 
 **Q: What about a database?**
 
-A: Azure offers database hosting, albeit expensive.  If you are in unfavorable financial situations such as myself, avoid them.  Instead, create a Sqlite3 databse, shove that into Azure blob stroage container, and have your Express server connect to that.  If you have money to spend, don't spend it on Azure.  I reckon setting up a VM, and creating a Postgre/MySQL/MariaDB database instance in that VM is cheaper (and better) than anything Azure has to offer.  No free SSL cert. on DigitalOcean VMs still tho :(
+A: Azure offers database hosting, albeit expensive.  Instead, I recommend creating a Sqlite3 databse, shove that into Azure blob stroage container, and have your Express server connect to that.  If you have money to spend, don't spend it on Azure.  I reckon setting up a VM, and creating a Postgre/MySQL/MariaDB database instance in that VM is cheaper (and better) than anything Azure has to offer.  You still neeed to pay for the SSL cert. on DigitalOcean VMs still tho :(
 
 ## Setup Tutorial
 
