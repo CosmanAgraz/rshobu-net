@@ -101,9 +101,9 @@ The important bit is that your Express server needs to serve the build files of 
 2. Select Github.  Azure is going to request access to your Github account, and (selected) repo.  Concent to all.
 3. Azure will generate a .yml file, then it will add, commit, and push it to your repo in `.github/workflows` directory.
 
-At this point, when you push your local changes to your master branch, Github Actions will update the repo, build, test, and deploy to your Azure Web App.  Still not done, we need to configure the build process.
+At this point, when you push your local changes to your master branch, Github Actions will update the repo, build, test, and deploy to your Azure Web App.
 
-Take note of that .yml file.  Notice:
+Take note of that .yml file:
 ```
     - name: npm install, build, and test
       run: |
@@ -114,21 +114,25 @@ Take note of that .yml file.  Notice:
 
 Its only executing these commands on our root directory, not inside our `client/` directory.  This means our application will fail because Azure has not installed the React dependecies, and the React app is also not being built.
 
-5. We want to: nvigate to ./client subdirectory, install dependecies, and build my React application.
+5. We want to: nvigate to `./client` subdirectory, install dependecies, and build my React application.
 6. So, add this to your `root/package.json` scripts (not to be confused with `root/client/package.json`!)
+
 ```"build": "cd ./client && npm install && npm run build"```
 
-That .yml file, and Github Actions, will give the instruction to Azure Web App on how to get our dependecies, and  build our application.
-This:
+Using the .yml file, Github Actions will give the instruction to Azure Web App to get our dependecies, and build our application.
+
+
 ```
         npm install
 ```
 Installs the dependecies in the root directory (the Express server).
 
-This:
+
+
 ```
         npm run build --if-present
 ```
 Is calling the script: `cd ./client && npm install && npm run build` which installs the dependecies in the `client/` directory (the React app), then builds it.
 
-Hopefully my half-assed tutorial taught you something. 😉
+
+And that, is how it's done. 😉
