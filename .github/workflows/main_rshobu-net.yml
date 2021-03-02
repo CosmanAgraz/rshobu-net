@@ -5,12 +5,15 @@ name: Build and deploy Node.js app to Azure Web App - rshobu-net
 
 on:
   push:
+    paths-ignore:
+      - 'README.md'
     branches:
       - main
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
     runs-on: ubuntu-latest
 
     steps:
