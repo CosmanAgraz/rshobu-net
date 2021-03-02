@@ -9,4 +9,11 @@
     justify-content: space-evenly;
 
     align-items: center;
+
+    margin: 1rem 0rem;
+}
+
+.root > li {
+    background-color: vars.$nav-link;
+    padding: 0 0.5rem;
 }

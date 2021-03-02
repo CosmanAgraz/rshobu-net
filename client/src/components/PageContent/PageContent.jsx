@@ -5,7 +5,7 @@ import styles from "./PageContent.module.scss";
 const PageContent = ( { children } ) =>
 {
     return (
-        <section className={styles.root}>{children}</section>
+        <div className={styles.root}>{children}</div>
     )
 }
 

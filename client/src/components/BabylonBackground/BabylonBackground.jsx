@@ -108,7 +108,5 @@ const onRender = camera =>
 }
 
 export default () => (
-    <div>
-        <SceneComponent antialias onSceneReady={onSceneReady} onRender={onRender} adaptToDeviceRatio={true} className={styles.root}/>
-    </div>
+    <SceneComponent antialias onSceneReady={onSceneReady} onRender={onRender} adaptToDeviceRatio={true} className={styles.root}/>
 )
