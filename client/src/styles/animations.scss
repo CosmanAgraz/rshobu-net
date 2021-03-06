@@ -31,6 +31,11 @@
     100% {opacity:1;}
 }
 
+@include keyframes(glow){
+    0% {box-shadow: 0 0 0.75rem 1px rgba(1, 1, 1, 0.0);}
+    100% {box-shadow: 0 0 0.75rem 1px rgba(1, 1, 1, 0.9);}
+}
+
 /* Usage
 @include animation('slide-down 5s 3');
 */

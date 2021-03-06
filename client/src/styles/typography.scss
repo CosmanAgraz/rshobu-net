@@ -2,6 +2,7 @@
     font-family: Roboto;
     font-size: 3rem;
     font-weight: 700;
+    text-align: center;
 }
 
 @mixin Heading-2 {
@@ -37,6 +38,7 @@
 @mixin Body-Regular {
     font-family: Roboto;
     font-size: 1rem;
+    margin: 0.5rem 0;
 }
 
 @mixin Body-Small {
