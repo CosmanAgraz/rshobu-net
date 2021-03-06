@@ -10,19 +10,19 @@ This project was made to meet 2 requirements:
 
 **Q: Why React**
 
-A: When you've written enough HTML/CSS/Javascript, you'll begin to realize that a lot of what you write becomes repetition.  React solves this problem by having a developer (you) create components, which can be used not only multiple times within a project, but across many projects.  This is 🔥 shit, I'm telling ya!
+A: When you've written enough HTML/CSS/Javascript, you'll begin to realize that a lot of what you write becomes repetition.  React solves this problem by having a developer (you) create components, which can be used not only multiple times within a project, but across many projects.
 
 **Q: Why Azure**
 
-A: Its free to sign up, they give you a free SSL certificate for your apps, and 1GB Free tier for Node.js web applications.  There are other (personal) reasons such as: GUI is better than AWS, but those previous ones listed are the main reason.  DigitalOcean and Linode offer attractive, shared resource VMs for $5USD/mo ~($8CAD/mo).  Using DigitalOcean was easy and offers a lot of freedom. But I am broke, in debt, and praying every night my landlord doesn't kick me out because I've been late on rent payments.  Azure fits my needs.
+A: Its free to sign up, they give you a free SSL certificate for your apps, and 1GB Free tier for Node.js web applications.  There are other (personal) reasons such as: GUI is better than AWS, but those previous ones listed are the main reason.  DigitalOcean and Linode offer attractive, shared resource VMs for $5USD/mo ~($8CAD/mo), but I cannot afford this.
 
 **Q: Why Github Actions?**
 
-A: Easy to setup, easy to maintain, and gets you from point A (development) to point B (deployment) quick.  Azure DevOps is nice and all, but there are too many steps to getting shit done.  Unfortunately, I don't have enough time in this world to learn all that shit, and neither do you.
+A: Easy to setup, easy to maintain, and gets you from point A (development) to point B (deployment) quick.  Azure DevOps is nice and all, but there are too many steps to getting shit done.
 
 **Q: What about a database?**
 
-A: Azure offers database hosting, albeit expensive.  If you are in unfavorable financial situations such as myself, avoid them.  Instead, create a Sqlite3 databse, shove that into Azure blob stroage container, and have your Express server connect to that.  If you have money to spend, don't spend it on Azure.  I reckon setting up a VM, and creating a Postgre/MySQL/MariaDB database instance in that VM is cheaper (and better) than anything Azure has to offer.  No free SSL cert. on DigitalOcean VMs still tho :(
+A: Azure offers database hosting, albeit expensive.  Instead, I recommend creating a Sqlite3 databse, shove that into Azure blob stroage container, and have your Express server connect to that.  If you have money to spend, don't spend it on Azure.  I reckon setting up a VM, and creating a Postgre/MySQL/MariaDB database instance in that VM is cheaper (and better) than anything Azure has to offer.  You still neeed to pay for the SSL cert. on DigitalOcean VMs still tho :(
 
 ## Setup Tutorial
 
@@ -101,9 +101,9 @@ The important bit is that your Express server needs to serve the build files of 
 2. Select Github.  Azure is going to request access to your Github account, and (selected) repo.  Concent to all.
 3. Azure will generate a .yml file, then it will add, commit, and push it to your repo in `.github/workflows` directory.
 
-At this point, when you push your local changes to your master branch, Github Actions will update the repo, build, test, and deploy to your Azure Web App.  Still not done, we need to configure the build process.
+At this point, when you push your local changes to your master branch, Github Actions will update the repo, build, test, and deploy to your Azure Web App.
 
-Take note of that .yml file.  Notice:
+Take note of that .yml file:
 ```
     - name: npm install, build, and test
       run: |
@@ -114,21 +114,25 @@ Take note of that .yml file.  Notice:
 
 Its only executing these commands on our root directory, not inside our `client/` directory.  This means our application will fail because Azure has not installed the React dependecies, and the React app is also not being built.
 
-5. We want to: nvigate to ./client subdirectory, install dependecies, and build my React application.
+5. We want to: nvigate to `./client` subdirectory, install dependecies, and build my React application.
 6. So, add this to your `root/package.json` scripts (not to be confused with `root/client/package.json`!)
+
 ```"build": "cd ./client && npm install && npm run build"```
 
-That .yml file, and Github Actions, will give the instruction to Azure Web App on how to get our dependecies, and  build our application.
-This:
+Using the .yml file, Github Actions will give the instruction to Azure Web App to get our dependecies, and build our application.
+
+
 ```
         npm install
 ```
 Installs the dependecies in the root directory (the Express server).
 
-This:
+
+
 ```
         npm run build --if-present
 ```
 Is calling the script: `cd ./client && npm install && npm run build` which installs the dependecies in the `client/` directory (the React app), then builds it.
 
-Hopefully my half-assed tutorial taught you something. 😉
+
+And that, is how it's done. 😉
