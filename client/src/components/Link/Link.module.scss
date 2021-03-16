@@ -1,0 +1,6 @@
+@use '../../styles/variables.scss' as vars;
+
+.root{
+    color: vars.$link-color !important;
+    text-decoration: underline !important;
+}
