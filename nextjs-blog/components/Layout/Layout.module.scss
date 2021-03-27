@@ -1,0 +1,25 @@
+@use "../../styles/index.scss";
+
+.root {
+    max-width: 36rem;
+    padding: 0 1rem;
+    margin: 3rem auto 6rem;
+
+    font-family: 'Roboto';
+}
+
+.borderCircle{
+    @include index.borderCircle;
+}
+
+.colorInherit{
+    @include index.colorInherit;
+}
+
+.heading2X1{
+    @include index.heading2Xl;
+}
+
+.headingLg{
+    @include index.headingLg;
+}

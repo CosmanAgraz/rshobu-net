@@ -1,0 +1,41 @@
+//animations
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+      @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+      @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+      @content;
+    }
+    @-o-keyframes #{$animation-name} {
+      @content;
+    }  
+    @keyframes #{$animation-name} {
+      @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};      
+}
+
+@include keyframes(fadeIn) {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@include keyframes(glow){
+    0% {box-shadow: 0 0 0.75rem 1px rgba(1, 1, 1, 0.0);}
+    100% {box-shadow: 0 0 0.75rem 1px rgba(1, 1, 1, 0.9);}
+}
+
+/* Usage
+@include animation('slide-down 5s 3');
+*/
