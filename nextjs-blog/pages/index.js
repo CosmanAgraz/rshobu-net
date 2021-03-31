@@ -1,18 +1,19 @@
 import Head from "next/head";
+import Link from "next/link";
 
-import { Layout } from "../components";
+import { Layout, Date } from "../components";
 
 import styles from "./index.module.scss";
 
 const siteTitle = "RShobu.NET";
 
 // hit up backend for written posts.  These can be saved in a disk, or in a database
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const url = `http://localhost:8000/get-posts`;
   const result = await fetch(url);
   return { props: {
     result: await result.json()
-  }}
+  } }
 }
 
 const Home = ( { result } ) =>
@@ -34,12 +35,16 @@ const Home = ( { result } ) =>
         <ul className={ styles.list }>
           {
             result.map( ( {id, date, title } ) => ( 
-              <li className={ styles.listItem }>
-                {title}
+              <li className={ styles.listItem } key={id}>
+                <Link href={ `/posts/${id}`} >
+                  <a>{title}</a>
+                </Link>
+                
                 <br/>
-                {id}
-                <br/>
-                {date}
+                <small className={styles.lightText}>
+                  <Date dateString={date} />
+                </small>
+                  
                 <br/>
               </li>
             ) )
