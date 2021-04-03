@@ -1,7 +1,11 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+
+// Installed dependencies
 const matter = require("gray-matter");
+const remark = require("remark");
+const html = require("remark-html");
 
 const app = new express();
 
@@ -63,19 +67,27 @@ app.get("/get-all-posts-ids", (req, res) => {
     res.json( postsIds );
 });
 
-app.get("/get-post-data/:id", (req, res) => {
+app.get("/get-post-data/:id", async (req, res) => {
+
     const id = req.params.id;
-    const fullPath = path.join(postsDirectory, `${id}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+
+    const fullPath = path.join(postsDirectory, `${id}.md`);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
   
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents)
+    const matterResult = matter(fileContents);
+
+    const processedContent = await remark().use(html).process(matterResult.content);
+    const content = processedContent.toString();
   
     // Combine the data with the id
     const postData = {
       id,
-      ...matterResult.data
+      content,
+      ...matterResult.data,
     }
+
+    console.log(postData);
 
     return res.json( postData );
 });

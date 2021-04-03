@@ -41,7 +41,7 @@ export default function Post( {postData} )
                     <Date dateString={postData.date}/>
                 </div>
                 <div>
-                    {postData.contentHtml}
+                    {postData.content}
                 </div>
             </article>
             

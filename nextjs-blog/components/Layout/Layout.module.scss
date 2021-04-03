@@ -2,16 +2,12 @@
 
 .root {
     max-width: 36rem;
-    padding: 0 1rem;
+    padding: 1rem;
     margin: 3rem auto 6rem;
 
     font-family: 'Roboto';
 
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.borderCircle{
-    @include index.borderCircle;
+    background-color: rgba(0, 0, 0, 0.70);
 }
 
 .colorInherit{
@@ -24,4 +20,8 @@
 
 .headingLg{
     @include index.headingLg;
+}
+
+.header{
+    text-align: center;
 }

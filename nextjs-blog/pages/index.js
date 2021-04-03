@@ -27,7 +27,7 @@ const Home = ( { result } ) =>
       </Head>
 
       <section className={styles.headingMd}>
-        <p>My name is Sergio Cosman Agraz.  I reside in Hamilton ON, Canada.  Thanks for stopping by.</p>
+        <p>Welcome to my domain!</p>
       </section>
 
       <section className={ `${styles.headingMd} ${styles.padding1px}` } >

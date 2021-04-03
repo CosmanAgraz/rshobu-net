@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import styles from "./Layout.module.scss";
 
-const name = "Sergio Cosman Agraz";
+const name = "RShobu.NET";
 
 const Layout = ( {children, home, siteTitle} ) =>
 {
@@ -26,6 +26,7 @@ const Layout = ( {children, home, siteTitle} ) =>
                 {home ? (
                     <>
                     <Image
+                        className={styles.image}
                         priority
                         src="/images/logo.png"
                         className={styles.borderCircle}
@@ -43,7 +44,6 @@ const Layout = ( {children, home, siteTitle} ) =>
                                 <Image
                                     priority
                                     src="/images/logo.png"
-                                    className={styles.borderCircle}
                                     height={108}
                                     width={108}
                                     alt={name}
