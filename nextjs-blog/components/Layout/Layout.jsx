@@ -44,13 +44,13 @@ const Layout = ( {children, home, siteTitle} ) =>
                                 <Image
                                     priority
                                     src="/images/logo.png"
-                                    height={108}
-                                    width={108}
+                                    height={64}
+                                    width={64}
                                     alt={name}
                                 />
                             </a>
                         </Link>
-                        <h2 className={styles.headingLg}>
+                        <h2 className={styles.headingMd}>
                             <Link href="/">
                                 <a className={styles.colorInherit}>{name}</a>
                             </Link>

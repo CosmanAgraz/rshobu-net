@@ -3,7 +3,7 @@
 .root {
     max-width: 36rem;
     padding: 1rem;
-    margin: 3rem auto 6rem;
+    margin: 1rem auto 1rem;
 
     font-family: 'Roboto';
 
@@ -20,6 +20,10 @@
 
 .headingLg{
     @include index.headingLg;
+}
+
+.headingMd{
+    @include index.headingMd;
 }
 
 .header{
