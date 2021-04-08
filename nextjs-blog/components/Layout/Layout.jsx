@@ -25,16 +25,16 @@ const Layout = ( {children, home, siteTitle} ) =>
             <header className={styles.header}>
                 {home ? (
                     <>
-                    <Image
-                        className={styles.image}
-                        priority
-                        src="/images/logo.png"
-                        className={styles.borderCircle}
-                        height={144}
-                        width={144}
-                        alt={name}
-                    />
-                    <h1 className={styles.heading2X1}>{name}</h1>
+                        <Image
+                            className={styles.image}
+                            priority
+                            src="/images/logo.png"
+                            className={styles.borderCircle}
+                            height={144}
+                            width={144}
+                            alt={name}
+                        />
+                        <h1 className={styles.heading2X1}>{name}</h1>
                     </>
 
                 ) : ( 

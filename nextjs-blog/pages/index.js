@@ -52,6 +52,7 @@ const Home = ( { result } ) =>
         </ul>
       </section>
     </Layout>
+    
     </>
   )
 }
