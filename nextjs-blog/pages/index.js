@@ -9,7 +9,7 @@ const siteTitle = "RShobu.NET";
 
 // hit up backend for written posts.  These can be saved in a disk, or in a database
 export const getStaticProps = async () => {
-  const url = `http://localhost:8000/get-posts`;
+  const url = `http://localhost:8000/blog/get-posts`;
   const result = await fetch(url);
   return { props: {
     result: await result.json()

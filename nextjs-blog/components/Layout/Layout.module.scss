@@ -4,9 +4,9 @@
 @import '../../styles/animations.scss';
 
 //Local variables
-$duration: 1s;
+$duration: 0.75s;
 
-@mixin layout {
+.root {
     max-width: 36rem;
     padding: 1rem;
     margin: 1rem auto 1rem;
@@ -14,18 +14,6 @@ $duration: 1s;
     font-family: 'Roboto';
 
     background-color: rgba(0, 0, 0, 0.70);
-}
-
-.root {
-    @include layout;
-    
-    @include animation("fadeIn" $duration 1);
-}
-
-.fadeOut {
-    @include layout;
-
-    @include animation("fadeOut" $duration 1);
 }
 
 .colorInherit{

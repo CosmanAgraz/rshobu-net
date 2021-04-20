@@ -4,12 +4,26 @@ import Link from "next/link";
 
 import styles from "./Layout.module.scss";
 
-const name = "RShobu.NET";
+import { motion } from "framer-motion";
 
-const Layout = ( {children, home, siteTitle} ) =>
+const name = "Sergio Cosman Agraz";
+
+const Layout = ( { children, home, siteTitle } ) =>
 {
+
+    const config = {
+        type: "spring",
+        damping: 20,
+        stiffness: 100
+    };
+
     return (
-        <div className={styles.root}>
+        <motion.div className={styles.root} 
+            transition={config}
+                    initial={{ scale: 1, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ x: 0, opacity: 0 }}
+        >
             <Head>
                 <link rel="icon" href="/favicon.ico" />
                 <meta
@@ -22,6 +36,7 @@ const Layout = ( {children, home, siteTitle} ) =>
                     content={siteTitle}
                 />
             </Head>
+
             <header className={styles.header}>
                 {home ? (
                     <>
@@ -52,7 +67,7 @@ const Layout = ( {children, home, siteTitle} ) =>
                         </Link>
                         <h2 className={styles.headingMd}>
                             <Link href="/">
-                                <a className={styles.colorInherit}>{name}</a>
+                                <a className={styles.colorInherit} >{name}</a>
                             </Link>
                         </h2>
                     </>
@@ -62,11 +77,12 @@ const Layout = ( {children, home, siteTitle} ) =>
             {!home && (
                 <div className={styles.backToHome}>
                 <Link href="/">
-                    <a>← Back to home</a>
+                    <a >← Back to home</a>
                 </Link>
                 </div>
             )}
-        </div>
+                        
+        </motion.div>
     )
 }
 
