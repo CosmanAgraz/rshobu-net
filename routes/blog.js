@@ -71,8 +71,6 @@ router.get("/get-post-data/:id", async (req, res) => {
       ...matterResult.data,
     }
 
-    console.log(postData);
-
     return res.json( postData );
 });
 

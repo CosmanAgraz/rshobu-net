@@ -1,13 +1,19 @@
-import styles from "../styles/global.scss";
+import { AnimatePresence } from "framer-motion";
+
 import { BabylonBackground } from "../components";
 
-const App = ( { Component, pageProps }) =>
+import styles from "../styles/global.scss";
+
+const App = ( { Component, pageProps, router}) =>
 {
     return (
-    <>
-        <BabylonBackground/>
-        <Component {...pageProps}/>
-    </>
+        <>
+            <BabylonBackground/>
+            <AnimatePresence exitBeforeEnter>
+                
+                <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
+        </>
     
     );
 }

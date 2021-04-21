@@ -21,5 +21,3 @@ The server logic and the client logic are also independant from each other.  So,
 The clientside was build using web component based practices using React/NextJS.  NextJS is built on top of React which handles a lot of boilerplate code such as client-side routing.  NextJS still uses JSX to define components.  The components which I wrote for this website could be used on any React project.  I write less, do more! ;)
 
 ---
-
-Hope you at least liked the cubes 🥺
