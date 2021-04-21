@@ -1,4 +1,4 @@
-import { BabylonBackground, Header, Wrapper, Footer, Text, PageContent} from "./components/";
+import { BabylonBackground, Header, Wrapper, Footer, Text, PageContent} from "./components";
 import { About, Gallery, Home } from "./pages";
 
 import {

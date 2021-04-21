@@ -130,3 +130,6 @@ yarn-error.log*
 ./client/concepts
 ./client/node_modules
 ./client/build
+
+# other
+./deprecated-client
