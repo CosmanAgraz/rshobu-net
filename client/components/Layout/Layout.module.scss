@@ -1,0 +1,37 @@
+@use "../../styles/index.scss";
+
+//import animations
+@import '../../styles/animations.scss';
+
+//Local variables
+$duration: 0.75s;
+
+.root {
+    max-width: 36rem;
+    padding: 1rem;
+    margin: 1rem auto 1rem;
+
+    font-family: 'Roboto';
+
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.colorInherit{
+    @include index.colorInherit;
+}
+
+.heading2X1{
+    @include index.heading2Xl;
+}
+
+.headingLg{
+    @include index.headingLg;
+}
+
+.headingMd{
+    @include index.headingMd;
+}
+
+.header{
+    text-align: center;
+}
