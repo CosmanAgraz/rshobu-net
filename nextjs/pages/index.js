@@ -8,11 +8,14 @@ import styles from "./index.module.scss";
 const siteTitle = "RShobu.NET";
 
 // hit up backend for written posts.  These can be saved in a disk, or in a database
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const url = `http://localhost:8000/blog/get-posts`;
+  
   const result = await fetch(url);
+  const data = await result.json();
+  
   return { props: {
-    result: await result.json()
+    result: data
   } }
 }
 

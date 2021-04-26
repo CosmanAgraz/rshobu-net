@@ -132,4 +132,4 @@ yarn-error.log*
 ./client/build
 
 # other
-./deprecated-client
+./nextjs

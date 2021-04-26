@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set("PORT", port);
 
-app.use(express.static("../client/build"));
+app.use(express.static("./client/build"));
 
 app.use("/", index);
 

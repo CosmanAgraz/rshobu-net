@@ -1,6 +1,7 @@
 export async function getSortedPostsData()
 {
     const res = await fetch("http://localhost:8000/blog/get-posts");
+    
     return res.json(); 
 }
 
@@ -16,5 +17,6 @@ export async function getPostData( id )
 export async function getAllPostsIds()
 {
     const res = await fetch("http://localhost:8000/blog/get-all-posts-ids");
+    
     return res.json();
 }

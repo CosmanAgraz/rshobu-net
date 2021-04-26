@@ -1,21 +1,11 @@
 import Head from "next/head";
 
 import { Layout, Date} from "../../components";
-import { getAllPostsIds, getPostData } from "../../lib/posts";
+import { getPostData } from "../../lib/posts";
 
 import styles from "./posts.module.scss";
 
-export async function getStaticPaths() 
-{
-    const paths = await getAllPostsIds();
-    return {
-        paths,
-        fallback: false
-    }
-    // return fetched data 
-}
-
-export async function getStaticProps( { params } )
+export async function getServerSideProps( { params } )
 {
     // return metadata
     const postData = await getPostData(params.id)
