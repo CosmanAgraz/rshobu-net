@@ -127,8 +127,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # client
-./client/concepts
-./client/node_modules
-./client/build
+/client/concepts
+/client/node_modules
+/client/build
 
-./nextjs
+/nextjs
