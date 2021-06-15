@@ -130,3 +130,5 @@ yarn-error.log*
 ./client/concepts
 ./client/node_modules
 ./client/build
+
+./nextjs
