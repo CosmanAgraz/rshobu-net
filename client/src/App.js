@@ -1,5 +1,6 @@
 import { BabylonBackground, Header, Wrapper, Footer, Text, PageContent} from "./components/";
-import { About, Gallery, Home } from "./pages";
+import { About, Gallery, Home, Projects } from "./pages";
+import { AnimatePresence } from "framer-motion";
 
 import {
     BrowserRouter as Router,
@@ -16,32 +17,32 @@ function App()
             <BabylonBackground width={window.innerWidth} height={window.innerHeight}/>
             <Wrapper>
                 <Header></Header>
-                <Switch>
-                    <Route path="/about">
-                        <PageContent>
-                            <About />
-                        </PageContent>
-                    </Route>
-                    <Route path="/gallery">
-                        <PageContent>
-                            <Gallery />
-                        </PageContent>
-                    </Route>
-                    <Route path="/">
-                        <PageContent>
-                            <Home />
-                        </PageContent>
-                    </Route>
-                </Switch>
-                
+                    <Switch>
+                        <Route path="/about">
+                            <PageContent>
+                                <About />
+                            </PageContent>
+                        </Route>
+                        <Route path="/gallery">
+                            <PageContent>
+                                <Gallery />
+                            </PageContent>
+                        </Route>
+                        <Route path="/projects">
+                            <PageContent>
+                                <Projects />
+                            </PageContent>
+                        </Route>
+                        <Route path="/">
+                            <PageContent>
+                                <Home />
+                            </PageContent>
+                        </Route>
+                    </Switch>
                 <Footer>
-                    <Text>Sergio Cosman Agraz &#9733; 2021</Text>
+                    <Text type="body">Sergio Cosman Agraz &#9733; 2021</Text>
                 </Footer>
             </Wrapper>
-                <div>
-
-
-                </div>
         </Router>
     );
 }

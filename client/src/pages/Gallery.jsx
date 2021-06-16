@@ -1,8 +1,6 @@
 import React from "react";
 import {Text, Link} from "../components";
 
-import ig from "../images/ig.png";
-
 const Gallery = () =>
 {
     return (

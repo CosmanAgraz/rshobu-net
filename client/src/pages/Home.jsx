@@ -1,17 +1,16 @@
 import React from "react";
-import {Text} from "../components";
+import {Text, Image} from "../components";
 
 const Home = () =>
 {
     return (
         <section>
-            <Text type="h1">Home</Text>
-            <Text type="h2">
-                Site under construction!
-            </Text>
-            <Text>
-                I'm still working on the site map, and content of the website.  I'll probably end up 
-                mashing this page and "About" page toghether.  Gallery coming soon!
+            
+            <Image width="200" height="200" source="https://sharedassets39.blob.core.windows.net/img/round-logo.png">
+
+            </Image>
+            <Text align="center" type="bodyLg">
+                Welcome to my domain
             </Text>
         </section>
     )

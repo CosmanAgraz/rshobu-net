@@ -8,15 +8,23 @@ const Header = () =>
     return (
         <nav>
             <ul className={styles.root}>
+                
                 <li>
                 <Link to="/" isNav>Home</Link>
                 </li>
+
                 <li>
-                <Link to="/about" isNav>About</Link>
+                <Link to="/projects" isNav>Projects</Link>
                 </li>
+
                 <li>
                 <Link to="/gallery" isNav>Gallery</Link>
                 </li>
+                
+                <li>
+                <Link to="/about" isNav>About</Link>
+                </li>
+
             </ul>
         </nav>
     )

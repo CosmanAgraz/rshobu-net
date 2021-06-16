@@ -1,8 +1,10 @@
 @import '../../styles/animations.scss';
 
 .root{
-    max-width: 60rem; /* 20px smaller, to fit the paddings on the sides */
-    height: 100%;
+    max-width: 50rem; /* 20px smaller, to fit the paddings on the sides */
+    min-width: 26.875rem;
+    min-height: 100%;
+    overflow: hidden;
 
     padding: 0 0.625rem;
     margin-left: auto;
@@ -17,13 +19,15 @@
 }
 
 .flexbox{
+    max-width: 50rem;
+    min-width: 26.875rem;
+
     display: flex;
     flex-direction: column;
     flex: 1;
     height: 100%;
 
-    margin-top:2rem;
+    margin-top:1rem;
     margin-bottom:2rem;
-
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
 }

@@ -1,11 +1,14 @@
 import React from "react";
+import { motion } from "framer-motion"
 
 import styles from "./PageContent.module.scss";
 
 const PageContent = ( { children } ) =>
 {
     return (
-        <div className={styles.root}>{children}</div>
+        <motion.div className={styles.root} exit={{ opacity: 0 }}>
+            {children}
+        </motion.div>
     )
 }
 

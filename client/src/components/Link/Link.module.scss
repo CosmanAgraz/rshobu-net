@@ -2,5 +2,8 @@
 
 .root{
     color: vars.$link-color !important;
-    text-decoration: underline !important;
+    text-decoration:none;
+    &:hover{
+        text-shadow: 0 0 3px #000000, 0 0 5px #FFFFFF;
+    }
 }

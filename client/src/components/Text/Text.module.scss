@@ -50,6 +50,18 @@
 }
 
 .header {
-    margin: 5rem 0;
+    margin: 4rem 0 1rem;
     color: vars.$text-color;
+}
+
+.center{
+    text-align: center;
+}
+
+.left{
+    text-align: left;
+}
+
+.right{
+    text-align: right;
 }
