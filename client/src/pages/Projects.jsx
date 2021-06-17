@@ -14,7 +14,7 @@ const Projects = () =>
             <Image source="https://sharedassets39.blob.core.windows.net/resources/mmbn3.gif">Remember to save often!</Image>
 
             <Text classname="p">
-                Looking for a fun way to play Megaman Battle Network 3?  Try this randomizer!! Contributed to the user interface of this project!
+                Looking for a fun way to play Megaman Battle Network 3?
             </Text>
 
             <Text classname="p">

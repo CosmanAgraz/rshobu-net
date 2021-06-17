@@ -10,7 +10,7 @@ const Home = () =>
 
             </Image>
             <Text align="center" type="bodyLg">
-                Welcome to my domain
+                Yo.
             </Text>
         </section>
     )
