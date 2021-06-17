@@ -1,10 +1,15 @@
 import React from "react";
+import {motion} from "framer-motion";
 import {Text, Link, Image} from "../components";
 
 const Projects = () =>
 {
     return (
-        <section>
+            <motion.div 
+                initial={{ opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}} 
+            >
             <Text type="h1">Projects</Text>
 
             <Text type="h4">
@@ -36,7 +41,7 @@ const Projects = () =>
             </Text>
             
             
-        </section>
+        </motion.div>
     )
 }
 

@@ -1,12 +1,14 @@
 import React from "react";
+import {motion} from "framer-motion";
 import {Text, Link} from "../components";
+
+import { pageTransition } from "../animations";
 
 const About = () =>
 {
     return (
-        <section>
+        <motion.div initial="out" animate="in" exit="out" variants={pageTransition}>
             <Text type={'h1'}>About</Text>
-
             <ul >
                 <li>
                 <Text>
@@ -26,7 +28,7 @@ const About = () =>
                 </Text>
                 </li>
             </ul>
-        </section>
+        </motion.div>
 
     )
 }

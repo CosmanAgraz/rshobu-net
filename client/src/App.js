@@ -17,6 +17,7 @@ function App()
             <BabylonBackground width={window.innerWidth} height={window.innerHeight}/>
             <Wrapper>
                 <Header></Header>
+                <AnimatePresence exitBeforeEnter>
                     <Switch>
                         <Route path="/about">
                             <PageContent>
@@ -39,6 +40,8 @@ function App()
                             </PageContent>
                         </Route>
                     </Switch>
+                </AnimatePresence>
+
                 <Footer>
                     <Text type="body">Sergio Cosman Agraz &#9733; 2021</Text>
                 </Footer>
