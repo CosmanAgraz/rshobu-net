@@ -15,7 +15,7 @@ const Home = () =>
 
             </Image>
             <Text align="center" type="bodyLg">
-                Yo.
+                Welcome to my domain!
             </Text>
         </motion.div>
     )
